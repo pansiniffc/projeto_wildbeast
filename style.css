@@ -21,7 +21,7 @@ a {
 
 img {
     display: block;
-    max-width: 100%;
+    width: 100%;
     border-radius: 5px;
 }
 
@@ -56,6 +56,7 @@ img {
         "anuncios"
         "footer";
     }
+
 }
 
 
@@ -95,6 +96,24 @@ img {
 .header li+li{ /* SO PEGA NO LI QUE TIVER OUTRO LI DEPOIS DELE */
     margin-left: 30px;
 }
+
+@media (max-width: 760px){
+    .header{
+        grid-template-columns: auto;
+    }
+
+    .logo{
+        margin-bottom: 20px;
+    }
+
+    .header nav a{
+        font-size: 1em;
+    }
+
+    .header li+li{
+        margin-left: 10px;
+    }
+}
 /* SIDENAV */
 
 .sidenav{
@@ -119,6 +138,46 @@ img {
     background: #B07DFB;
 }
 
+@keyframes seta {
+    from {
+        right: 30px;
+    }
+    to {
+        right: 20px;
+    }
+}
+
+@media (max-width: 760px){
+    .sidenav ul {
+        display: flex;        
+    }
+
+    .sidenav ul li {
+        flex: 1 0 60px;
+    }
+
+    .sidenav {
+        position: relative;
+        padding: 0 30px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    .sidenav::after{
+        content: '→';
+        position: absolute;
+        top: 5px;
+        right: 30px;
+        color: rgba(0,0,0,.3);
+        animation: seta .5 ease-in 0s infinite alternate;
+    }
+
+    .sidenav li a {
+        margin: 30px 30px 30px 0px;
+    }
+}
+
 /*CONTEUDO*/
 .content{
     grid-area: content;
@@ -128,6 +187,12 @@ img {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 30px;
+}
+
+@media (max-width: 600px ) {
+    .content {
+        grid-template-columns: auto;
+    }
 }
 
 .col-wide{
@@ -258,6 +323,7 @@ p {
     align-content: start;
     padding: 30px;
     grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 
